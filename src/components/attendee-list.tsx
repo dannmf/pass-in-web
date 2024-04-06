@@ -1,5 +1,9 @@
 import { Search, MoreHorizontal, ChevronsLeft, ChevronLeft, ChevronRight, ChevronsRight } from 'lucide-react'
 import { IconButton } from './icon-button'
+import { Table } from './table/table'
+import { TableHeader } from './table/table-header'
+import { TableCell } from './table/table-cell'
+import { TableRow } from './table/table-row'
 
 export function AttendeeList() {
     return (
@@ -11,49 +15,48 @@ export function AttendeeList() {
                     <input className="bg-transparent flex-1 outline-none border-0 p-0 text-sm" placeholder="Buscar Participante" />
                 </div>
             </div>
-            <div className="border border-white/10 rounded-lg ">
-                <table className="w-full ">
+                <Table>
                     <thead>
                         <tr className='border-b border-white/10'>
-                            <th style={{ width: 64 }} className="py-3 px-4 text-sm font-semibold text-left">
+                            <TableHeader style={{ width: 64}}>
                                 <input type="checkbox" className="size-4 bg-black/20 rounded border-white/10" />
-                            </th>
-                            <th className="py-3 px-4 text-sm font-semibold text-left">Código</th>
-                            <th className="py-3 px-4 text-sm font-semibold text-left">Participante</th>
-                            <th className="py-3 px-4 text-sm font-semibold text-left">Data de inscrição</th>
-                            <th className="py-3 px-4 text-sm font-semibold text-left">Data do check-in</th>
-                            <th style={{ width: 64 }} className="py-3 px-4 text-sm font-semibold text-left"> </th>
+                            </TableHeader>
+                            <TableHeader>Código</TableHeader>
+                            <TableHeader>Participante</TableHeader>
+                            <TableHeader>Data de inscrição</TableHeader>
+                            <TableHeader>Data do check-in</TableHeader>
+                            <TableHeader style={{ width: 64 }}> </TableHeader>
                         </tr>
                     </thead>
                     <tbody>
                         {Array.from({ length: 8 }).map((_, i) => {
                             return (
-                                <tr key={i} className='border-b border-white/10 hover:bg-white/5'>
-                                    <td className="py-3 px-4 text-sm text-zinc-300"><input type="checkbox" className="size-4 bg-black/20 rounded border-white/10" /></td>
-                                    <td className="py-3 px-4 text-sm text-zinc-300">123123123</td>
-                                    <td className="py-3 px-4 text-sm text-zinc-300">
+                                <TableRow key={i}>
+                                    <TableCell><input type="checkbox" className="size-4 bg-black/20 rounded border-white/10" /></TableCell>
+                                    <TableCell>123123123</TableCell>
+                                    <TableCell>
                                         <div className='flex flex-col gap-1'>
                                             <span className='font-semibold text-white'>Daniel Manoel</span>
                                             <span>daniel@gmail.com</span>
                                         </div>
-                                    </td>
-                                    <td className="py-3 px-4 text-sm text-zinc-300">7 dias atrás</td>
-                                    <td className="py-3 px-4 text-sm text-zinc-300">3 dias atrás</td>
-                                    <td className="py-3 px-4 text-sm text-zinc-300">
+                                    </TableCell>
+                                    <TableCell>7 dias atrás</TableCell>
+                                    <TableCell>3 dias atrás</TableCell>
+                                    <TableCell>
                                         <IconButton transparent>
                                             <MoreHorizontal className="size-4" />
                                         </IconButton>
-                                    </td>
-                                </tr>
+                                    </TableCell>
+                                </TableRow>
                             )
                         })}
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td className="py-3 px-4 text-sm font-semibold text-left" colSpan={3}>
+                            <TableCell className="py-3 px-4 text-sm font-semibold text-left" colSpan={3}>
                                 Mostrando 10 de 228 itens
-                            </td>
-                            <td className="py-3 px-4 text-sm font-semibold text-right" colSpan={3}>
+                            </TableCell>
+                            <TableCell className="text-right" colSpan={3}>
                                 <div className="inline-flex items-center gap-8">
 
                                     Página 1 de 23
@@ -73,14 +76,13 @@ export function AttendeeList() {
                                     </div>
                                 </div>
 
-                            </td>
+                            </TableCell>
 
                         </tr>
                     </tfoot>
-                </table>
+                </Table>
             </div>
 
-        </div>
 
 
     )
